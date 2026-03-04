@@ -1,0 +1,149 @@
+🎬 Bắt đầu thực hành (Chú ý lệnh cd để chuyển đổi "người" nhé)
+1. A tạo project
+
+Tạo thư mục cho A và khởi tạo Git:
+
+Bash
+mkdir User_A
+cd User_A
+git init
+echo "Project Khoi Tao" > UI.txt
+git add .
+git commit -m "A khoi tao project"
+git branch -M main
+git remote add origin <Link-GitHub-Của-Bạn>
+git push -u origin main
+2. B lấy project về, thêm UI Username -> Push
+
+Đóng vai B (thoát khỏi thư mục A, clone code về thư mục B):
+
+Bash
+cd ..
+git clone <Link-GitHub-Của-Bạn> User_B
+cd User_B
+Mở file UI.txt trong thư mục User_B, sửa nội dung thành: Label UserName, textbox txtUserName
+
+Lưu lại và Push:
+
+Bash
+git add .
+git commit -m "B them UI Username"
+git push origin main
+3. A lấy project về, thêm UI Mật khẩu -> Push
+
+Quay lại "máy" của A:
+
+Bash
+cd ../User_A
+git pull origin main
+Mở file UI.txt trong thư mục User_A, thêm dòng: Label Mật khẩu, textbox txtmatkhau
+
+Lưu lại và Push:
+
+Bash
+git add .
+git commit -m "A them UI Mat khau"
+git push origin main
+4. B lấy project về, sửa UI -> Push
+
+Đổi sang "máy" của B:
+
+Bash
+cd ../User_B
+git pull origin main
+Mở UI.txt, đổi "Mật khẩu" thành "Password", "txtmatkhau" thành "txtpassword", thêm "btnlogin".
+
+Lưu lại và Push:
+
+Bash
+git add .
+git commit -m "B sua Password va them btnlogin"
+git push origin main
+5. C lấy project về
+
+C xuất hiện! Tạo "máy" cho C:
+
+Bash
+cd ..
+git clone <Link-GitHub-Của-Bạn> User_C
+Lúc này C đang có code mới nhất từ bước 4 của B.
+
+6. A thay đổi label -> Push (⚠️ Bắt đầu có biến)
+
+Đổi về "máy" của A:
+
+Bash
+cd User_A
+Cố tình không pull! Mở UI.txt lên, đổi label thành "tên đăng nhập, mật khẩu".
+
+Gõ lệnh Push:
+
+Bash
+git add .
+git commit -m "A doi ten label"
+git push origin main 
+💥 LỖI (Rejected): Git sẽ báo lỗi vì A đang đẩy code cũ (thiếu bản cập nhật bước 4 của B).
+
+Cách giải quyết (Mô phỏng Xung đột):
+
+Gõ git pull origin main.
+
+Sẽ có thông báo Merge Conflict (xung đột).
+
+Mở file UI.txt bằng VS Code hoặc Notepad, bạn sẽ thấy các dấu <<<<<<<, =======, >>>>>>>. Xóa các dấu này đi, gộp nội dung lại cho hợp lý (chọn giữ lại cả của A và B).
+
+Gõ tiếp:
+
+Bash
+git add .
+git commit -m "A giai quyet xung dot label"
+git push origin main
+7. B lấy project về thay đổi login thành đăng nhập -> Push
+
+Đổi về "máy" của B:
+
+Bash
+cd ../User_B
+git pull origin main
+Mở UI.txt, đổi chữ "btnlogin" thành "nút đăng nhập".
+
+Lưu lại và Push:
+
+Bash
+git add .
+git commit -m "B doi ten nut dang nhap"
+git push origin main
+8. C sửa id -> Push (⚠️ Xung đột tập 2)
+
+Đổi về "máy" của C:
+
+Bash
+cd ../User_C
+C cũng đang giữ code cũ từ bước 5! Mở UI.txt, đổi ID thành textboxusername, textboxmatkhau.
+
+Thử Push:
+
+Bash
+git add .
+git commit -m "C sua id textbox"
+git push origin main
+💥 LỖI (Rejected). * Cách giải quyết: Lặp lại y hệt bước 6. Chạy git pull origin main, mở file gỡ code màu đỏ (Conflict), lưu lại, rồi add, commit, push.
+
+9. A lấy project về, thêm chức năng -> Push
+
+Cuối cùng, quay lại A để chốt hạ:
+
+Bash
+cd ../User_A
+git pull origin main
+Mở UI.txt, thêm một dòng ghi chú: Logic: if username==admin, password==admin -> thanh cong.
+
+Lưu lại và Push:
+
+Bash
+git add .
+git commit -m "A them logic dang nhap thanh cong"
+git push origin main
+Hoàn thành bài tập này là bạn đã "nắm trùm" quy trình cơ bản của Git khi làm việc nhóm rồi đấy.
+
+Bạn có muốn tôi hướng dẫn chi tiết cách đọc các ký hiệu <<<<<<<, =======, >>>>>>> khi xảy ra Merge Conflict ở bước 6 để bạn biết chính xác cần xóa dòng nào, giữ dòng nào không?
