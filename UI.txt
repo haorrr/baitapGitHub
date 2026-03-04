@@ -1,2 +1,3 @@
 Project Khoi Tao
 Label UserName, textbox txtUserName
+Label Mật khẩu, textbox txtmatkhau
