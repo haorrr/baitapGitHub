@@ -1,1 +1,2 @@
 Project Khoi Tao
+Label UserName, textbox txtUserName
